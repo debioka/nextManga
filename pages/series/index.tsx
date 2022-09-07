@@ -10,7 +10,6 @@ import { InferGetServerSidePropsType } from 'next'
 
 const Series: NextPage<{series: Folder[]}> = ({ series }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (<div>
-    <p>Received Series: {JSON.stringify(series)}</p>
     <GridComponent folders={series}/>
   </div>)
 }

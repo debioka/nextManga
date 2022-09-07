@@ -2,8 +2,8 @@ import { readdirSync, statSync } from 'fs'
 import path from 'path'
 import { Folder, ImagePath, isImage } from '../interfaces/types'
 import series from '../pages/api/seriesList'
-const FSROOT = 'public/library/'
-const WEBROOT = '/library/'
+const FSROOT = 'public/library/本'
+const WEBROOT = '/library/本/'
 
 const NOFOLDER: FolderOption = false
 type FolderOption =  Folder | false
