@@ -39,3 +39,51 @@ a {
   max-height: 500px;
   max-width: 400px;
 }
+
+.pageContainer {
+  max-width: 100vh;
+  max-width: 100vw;
+}
+
+.pageDiv {
+  display: grid;
+  text-align: center;
+  grid-template-columns: auto 1fr 1fr auto;
+  width: 100vw;
+  height: 95vh;
+}
+
+.pageImgDivR {
+  width: auto;
+  height: 95vh;
+  left: 0mm;
+  right: auto;
+}
+
+.pageImgDivL {
+  width: auto;
+  height: 95vh;
+  left: auto;
+  right: 0mm
+}
+
+.pageGridSpacer {
+  width: auto;
+  height: auto;
+}
+
+.pageImgR {
+  object-fit: contain;
+  object-position: left;
+  max-width: 50;
+  max-height: 95vh;
+  width: 100%;
+}
+
+.pageImgL {
+  object-fit: contain;
+  object-position: right;
+  max-width: 50;
+  max-height: 95vh;
+  width: 100%;
+}

@@ -2,7 +2,8 @@ import { readdirSync, statSync } from 'fs'
 import path from 'path'
 import { Folder, ImagePath, isImage } from '../interfaces/types'
 import series from '../pages/api/seriesList'
-const ROOT = 'public/series/'
+const FSROOT = 'public/library/'
+const WEBROOT = '/library/'
 
 const NOFOLDER: FolderOption = false
 type FolderOption =  Folder | false
@@ -12,15 +13,15 @@ type ImageOption = ImagePath | false
 
 
 function isDirectory(pth: string): boolean {
-    return statSync(path.join(ROOT, pth)).isDirectory()
+    return statSync(path.join(FSROOT, pth)).isDirectory()
 }
 
-function listFiles(pth: string) { return readdirSync(path.join(ROOT, pth)) }
+function listFiles(pth: string) { return readdirSync(path.join(FSROOT, pth)) }
 
 function getThumbnail (relPath: string): ImageOption {
     if (isDirectory(relPath)) {  
         for (const pth of listFiles(relPath)) {
-            const img = path.join("/series", relPath, pth)
+            const img = path.join(WEBROOT, relPath, pth)
             if (isImage(img)) {
                 return img
             }
@@ -32,7 +33,7 @@ function getThumbnail (relPath: string): ImageOption {
 function getVolume(title: string, volume: string): FolderOption {
     const img = getThumbnail(path.join(title, volume))
      if (img) {
-        return { name: volume, icon: img }
+        return { link: path.join(title, volume), name: volume, icon: img }
      } else {
         return NOFOLDER
      }
@@ -51,7 +52,7 @@ function getSeries(title: string): FolderOption {
         for (const pth of listFiles(title)) {
            const volFolder = getVolume(title, pth)
            if (isFolder(volFolder)) {
-                return {name: title, icon: volFolder.icon}
+                return {link:title, name: title, icon: volFolder.icon}
            }
         } 
     }
@@ -63,5 +64,5 @@ export function getSeriesList(): Folder[] {
 }
 
 export function getPageList(title: string, volume: string): ImagePath[] {
-    return listFiles(path.join("/series", title, volume)).filter(isImage)
+    return listFiles(path.join(title, volume)).map((img) => path.join(WEBROOT, title, volume, img)).filter(isImage)
 }
