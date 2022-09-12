@@ -1,7 +1,7 @@
 const path = require("path")
 
 
-const IMGTYPES = ['.avif', '.bmp', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', 'tif', 'tiff', 'webp']
+const IMGTYPES = ['.avif', '.bmp', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', '.tif', '.tiff', '.webp']
 
 export type Folder = {
     link: string

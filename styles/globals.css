@@ -27,8 +27,11 @@ a {
 
 .flexcontainer {
   display: flex;
+  flex: 0 1 auto;
   flex-flow: row wrap;
-  gap: 10px 10px
+  gap: 10px 10px;
+  flex-basis: 100px;
+  max-height: 95vh;
 }
 
 .folderThumbnail {
@@ -36,8 +39,9 @@ a {
 }
 
 .thumbnail {
-  max-height: 500px;
-  max-width: 400px;
+  max-height: 400px;
+  max-width: 225px;
+  object-fit: contain;
 }
 
 .pageContainer {
@@ -86,4 +90,17 @@ a {
   max-width: 50;
   max-height: 95vh;
   width: 100%;
+}
+
+.buttonDiv {
+  flex : row;
+  position: fixed;
+  bottom: 10px;
+  transform: translate(40vw, 0); 
+}
+
+button {
+  font-size: large;
+  margin-right: 10px;
+  margin-left: 10px;
 }
